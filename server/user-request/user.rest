@@ -1,12 +1,8 @@
-GET http://localhost:3000/users
-
-###
-
-POST http://localhost:3000/users
+POST http://localhost:3000/api/account/register
 Content-Type: application/json
 
 {
-    "name": "Kshitij",
-    "email": "kshitij@tomei.com",
+    "name": "Test User",
+    "email": "test@tomei.com",
     "password": "password"
 }
