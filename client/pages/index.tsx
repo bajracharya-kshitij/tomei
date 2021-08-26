@@ -1,8 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Image from 'next/image'
+
+import Steps from '../components/steps'
+
+import logo from '../public/images/Logo.png'
 
 const Home: NextPage = () => {
+
+
   return (
     <div>
       <Head>
@@ -11,11 +17,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to Tomei
-        </h1>
-      </main>
+      <Image src={logo} alt="Tomei Logo" />
+      <Steps />
     </div>
   )
 }
