@@ -1,21 +1,15 @@
-import express from 'express'
+import http = require("http");
+import makeApp from "./app";
+import Database from "./database";
 
-const app = express()
-const PORT = 3000
+require("dotenv").config();
 
-app.use(express.json())
+const app = makeApp(new Database().sequelize)
 
-const users: { name: string, email: string, password: string }[] = []
+const { SERVER_HOST, SERVER_PORT } = process.env;
 
-app.get('/users', (req, res) => {
-    res.json(users)
-})
+const server = http.createServer(app);
 
-app.post('/users', (req, res) => {
-    const user = { name: req.body.name, email: req.body.email, password: req.body.password }
-    users.push(user)
-})
-
-app.listen(PORT, () => {
-    console.log(`Server started at http://localhost:${PORT}`)
+server.listen(SERVER_PORT, () => {
+    console.log(`Server started at ${SERVER_HOST}:${SERVER_PORT}`)
 })
