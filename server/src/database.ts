@@ -16,6 +16,7 @@ export default class Database {
     public constructor() {
         this.connect();
         this.verifyConnection();
+        this.initModels();
     }
 
     public connect(): void {

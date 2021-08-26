@@ -19,6 +19,13 @@ const defaultConfig = {
     dialect: DB_DRIVER
 };
 
+const storageConfig = {
+    migrationStorage: 'json',
+    migrationStoragePath: './database/migration-metadata.json',
+    seederStorage: 'json',
+    seederStoragePath: './database/seeder-metadata.json',
+};
+
 module.exports = {
-    [env]: { ...defaultConfig },
+    [env]: { ...defaultConfig, ...storageConfig },
 };
