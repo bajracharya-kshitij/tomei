@@ -8,7 +8,7 @@
     "seed": "sequelize db:seed:all || npx sequelize-cli db:seed:all",
     "before:script": "npm install && npm run migrate && npm run seed",
     "dev": "npm run before:script && nodemon --exec ts-node src/server.ts",
-    "start": "npm run before:script && ts-node src/index.ts",
+    "start": "npm run before:script && ts-node src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
