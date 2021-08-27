@@ -11,14 +11,13 @@ type StepProps = {
 }
 
 const Step = (props: StepProps) => {
-    console.log(props.index)
     return (
         <>
             <Image src={props.image} alt={props.header} />
             <div className={styles.description}>
                 <div className={props.index === 0 ? styles.selectedStep : ''}>
                     <div className={styles.header}>{props.header}:</div>
-                    <div className={styles.text}>{props.text}</div>
+                    <div className={`${styles.text} ${styles.stepText}`}>{props.text}</div>
                 </div>
             </div>
         </>

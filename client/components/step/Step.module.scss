@@ -6,13 +6,23 @@
 }
 
 .header {
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .text {
     font-weight: 500;
 }
 
+.stepText {
+    display: none;
+}
+
 .selectedStep {
     color: #0A3977;
+}
+
+@media screen and (min-width: 600px) {
+    .stepText {
+      display: block;
+    }
 }
