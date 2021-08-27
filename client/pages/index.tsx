@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import Steps from '../components/steps'
+import Account from '../components/account'
 
 import logo from '../public/images/Logo.png'
 
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
 
       <Image src={logo} alt="Tomei Logo" />
       <Steps />
+      <Account />
     </div>
   )
 }
