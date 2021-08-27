@@ -83,3 +83,17 @@
 .textCenter {
     text-align: center;
 }
+
+.imageUpload {
+    flex-wrap: wrap;
+    label {
+        cursor: pointer;
+    
+        :hover {
+            opacity: .8;
+        }
+    }
+    >input {
+        display: none;
+    }
+}

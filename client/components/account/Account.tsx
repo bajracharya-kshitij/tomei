@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import axios from 'axios';
-import Image from 'next/image'
 
 import { valueExists } from '../../utils/parser'
-
-import avatar from '../../public/images/Avatar.png'
-import arrow from '../../public/images/arrow-right.png'
 
 import styles from './Account.module.scss'
 
@@ -23,8 +19,9 @@ const Account = () => {
     const [password, setPassword] = useState<string>("")
     const [confirmPassword, setConfirmPassword] = useState<string>("")
     const [passwordMismatch, setPasswordMismatch] = useState<boolean>(false)
-    const [image, setImage] = useState(null);
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
+    const [image, setImage] = useState<string>("");
+    const [isUploaded, setIsUploaded] = useState(false);
+    const [fileType, setFileType] = useState("");
 
     const checkPassword = (value: string) => {
         setPassword(value)
@@ -44,11 +41,19 @@ const Account = () => {
         setPasswordMismatch(false)
     }
 
-    const upload = (event: any) => {
-        if (event.target.files && event.target.files[0]) {
-            const i = event.target.files[0];
-            setImage(i);
-            setImageUrl(URL.createObjectURL(i))
+    const handleImageChange = (e: any) => {
+        if (e.target.files && e.target.files[0]) {
+            setFileType(e.target.files[0].type);
+            let reader = new FileReader();
+
+            reader.onload = function (e) {
+                //@ts-ignore
+                setImage(e.target.result);
+                setIsUploaded(true);
+            };
+
+            reader.readAsDataURL(e.target.files[0]);
+            console.log(image)
         }
     }
 
@@ -77,11 +82,43 @@ const Account = () => {
                 <Form className={styles.form} onSubmit={handleSubmit}>
                     <Row>
                         <Col md={2}>
-                            {/* {imageUrl != null ? <Image src={imageUrl} alt="Avatar" width='100' height='100' /> : <Image src={avatar} alt="Avatar" />} */}
                             <div className={styles.textCenter}>
-                                <img src='images/Avatar.png' alt="avatar" />
-                                {/* <input type="file" name="myImage" onChange={upload} /> */}
-                                <div className={styles.upload}>Upload</div>
+                                <div className={styles.imageUpload}>
+                                    {!isUploaded ? (
+                                        <>
+                                            <label htmlFor="upload-input">
+                                                <img src='images/Avatar.png' alt="avatar" />
+                                                <p className={styles.upload}>Upload</p>
+                                            </label>
+
+                                            <input
+                                                id="upload-input"
+                                                type="file"
+                                                accept=".jpg,.jpeg,.gif,.png"
+                                                onChange={handleImageChange}
+                                            />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <label htmlFor="upload-change-input">
+                                                <img
+                                                    className={styles.image}
+                                                    src={image}
+                                                    draggable={false}
+                                                    alt="uploaded-img"
+                                                />
+                                                <p className={styles.upload}>Change</p>
+                                            </label>
+
+                                            <input
+                                                id="upload-change-input"
+                                                type="file"
+                                                accept=".jpg,.jpeg,.gif,.png"
+                                                onChange={handleImageChange}
+                                            />
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </Col>
                         <Col md={5}>
