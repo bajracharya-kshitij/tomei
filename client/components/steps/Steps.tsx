@@ -8,7 +8,6 @@ import stepTwo from '../../public/images/Wizard-Step2.png'
 import stepThree from '../../public/images/Wizard-Step3.png'
 import stepFour from '../../public/images/Wizard-Step4.png'
 import stepFive from '../../public/images/Wizard-Step5.png'
-import horizontalBar from '../../public/images/Wizard-HorizontalBar.png'
 
 import styles from './Steps.module.scss'
 
@@ -23,14 +22,14 @@ const Steps = () => {
     ]
 
     return (
-        <>
+        <div className={styles.stepWrap}>
             {steps.map((step, index) => {
                 return <div key={index} className={styles.steps}>
-                    <Step image={step.image} header={step.header} text={step.text} />
-                    {step.appendHorizontalBar && <Image src={horizontalBar} alt="Horizontal Bar" />}
+                    <Step index={index} image={step.image} header={step.header} text={step.text} />
+                    {step.appendHorizontalBar && <img className={styles.horizontalBar} src='images/Wizard-HorizontalBar.png' alt="Horizontal Bar" />}
                 </div>
             })}
-        </>
+        </div>
     )
 }
 

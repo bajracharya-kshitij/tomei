@@ -1,39 +1,85 @@
 .accountHeader {
-    font-family: 'Open Sans';
-    font-weight: 500;
+    font-weight: 600;
     font-size: 21px;
     color: #000;
     background-color: #C5DCFA;
     text-transform: uppercase;
+    margin: 60px 0px 20px;
+}
+
+.formWrap {
+    padding: 10px;
 }
 
 .text {
-    font-family: 'Open Sans';
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     color: #000;
+    margin-bottom: 20px;
 }
 
 .upload {
-    font-family: 'Open Sans';
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16px;
     color: #000;
+    text-align: center;
 }
 
 .formLabel {
-    font-family: 'Open Sans';
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     color: #C7C7C7;
     text-transform: uppercase;
 }
 
 .submitButton {
-    font-family: 'Open Sans';
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     color: #0A3977;
     background-color: #C5DCFA;
     text-transform: uppercase;
+    border: none;
+    display: inline-flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+
+.form {
+    text-align: left;
+}
+
+.formGroup {
+    position: relative;
+}
+
+.formControl {
+    border: 1px solid #C7C7C7;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.textRight {
+    text-align: right;
+}
+
+.arrow {
+    margin-left: 10px;
+}
+
+.errorMessage {
+    color: red;
+    position: absolute;
+    bottom: -25px;
+}
+
+.image {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+}
+
+.textCenter {
+    text-align: center;
 }

@@ -1,3 +1,18 @@
+.stepWrap {
+    display: flex;
+    align-items: flex-start;
+}
+
 .steps {
-    flex-direction: row;
+    text-align: center;
+    position: relative;
+    width: 200px;
+}
+
+.horizontalBar {
+    position: absolute;
+    width: 100%;
+    top: 38px;
+    z-index: -1;
+    height: 3px;
 }
