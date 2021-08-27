@@ -1,31 +1,44 @@
-import React from 'react'
-import Image from 'next/image'
+import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap';
+import Image from 'next/image'
+
+import { valueExists } from '../../utils/parser'
 
 import avatar from '../../public/images/Avatar.png'
 
 import styles from './Account.module.scss'
 
+type AccountProps = {
+    name: string,
+    email: string,
+    password: string
+}
+
 const Account = () => {
 
-    const handleSubmit = () => {
-        console.log('handle submit')
+    const [name, setName] = useState<string>("")
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [confirmPassword, setConfirmPassword] = useState<string>("")
+    const [passwordMismatch, setPasswordMismatch] = useState<boolean>(false)
+
+    const checkPassword = (value: string) => {
+        setPassword(value)
+        setPasswordMismatch(!valueExists(value) || !valueExists(confirmPassword) || confirmPassword !== value)
     }
 
-    const setName = (name: string) => {
-        console.log(name)
+    const checkConfirmPassword = (value: string) => {
+        setConfirmPassword(value)
+        setPasswordMismatch(!valueExists(password) || !valueExists(value) || password !== value)
     }
 
-    const setEmail = (email: string) => {
-        console.log(email)
-    }
-
-    const setPassword = (password: string) => {
-        console.log(password)
-    }
-
-    const setConfirmPassword = (confirmPassword: string) => {
-        console.log(confirmPassword)
+    const handleSubmit = (e: any) => {
+        const accountDetails: AccountProps = {
+            name: name,
+            email: email,
+            password: password
+        }
+        e.preventDefault();
     }
 
     return (
@@ -47,11 +60,12 @@ const Account = () => {
                 </Form.Group>
                 <Form.Group controlId="formPassword">
                     <Form.Label className={styles.formLabel}>Password</Form.Label>
-                    <Form.Control type="text" onChange={(e) => setPassword(e.target.value)} />
+                    <Form.Control type="password" onChange={(e) => checkPassword(e.target.value)} />
                 </Form.Group>
                 <Form.Group controlId="formConfirmPassword">
                     <Form.Label className={styles.formLabel}>Confirm Password</Form.Label>
-                    <Form.Control type="text" onChange={(e) => setConfirmPassword(e.target.value)} />
+                    <Form.Control type="password" onChange={(e) => checkConfirmPassword(e.target.value)} />
+                    {passwordMismatch && <div>Password doesn't match</div>}
                 </Form.Group>
                 <Button variant="primary" type="submit" className={styles.submitButton}>
                     Save & Next
