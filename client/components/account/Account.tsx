@@ -79,7 +79,7 @@ const Account = () => {
                         <Col md={2}>
                             {/* {imageUrl != null ? <Image src={imageUrl} alt="Avatar" width='100' height='100' /> : <Image src={avatar} alt="Avatar" />} */}
                             <div className={styles.textCenter}>
-                                <img className={styles.image} src='images/Avatar.png' alt="avatar" />
+                                <img src='images/Avatar.png' alt="avatar" />
                                 {/* <input type="file" name="myImage" onChange={upload} /> */}
                                 <div className={styles.upload}>Upload</div>
                             </div>
