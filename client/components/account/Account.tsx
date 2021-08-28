@@ -39,6 +39,9 @@ const Account = () => {
         setPassword('')
         setConfirmPassword('')
         setPasswordMismatch(false)
+        setImage('')
+        setIsUploaded(false)
+        setFileType('')
     }
 
     const handleImageChange = (e: any) => {
