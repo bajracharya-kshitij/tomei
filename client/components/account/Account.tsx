@@ -9,7 +9,8 @@ import styles from './Account.module.scss'
 type AccountProps = {
     name: string,
     email: string,
-    password: string
+    password: string,
+    image: string
 }
 
 const Account = () => {
@@ -56,7 +57,6 @@ const Account = () => {
             };
 
             reader.readAsDataURL(e.target.files[0]);
-            console.log(image)
         }
     }
 
@@ -64,7 +64,8 @@ const Account = () => {
         const accountDetails: AccountProps = {
             name: name,
             email: email,
-            password: password
+            password: password,
+            image: image
         }
 
         axios.post(`/api/account/register`, accountDetails)
@@ -82,7 +83,7 @@ const Account = () => {
             <div className={styles.formWrap}>
                 <div className={styles.text}>Because there will be documents that you need to prepare to apply for the loan, let's start off by creating a password so that you can login to your account once you have these document ready.</div>
 
-                <Form className={styles.form} onSubmit={handleSubmit}>
+                <Form className={styles.form} onSubmit={handleSubmit} encType="multipart/form-data">
                     <Row>
                         <Col md={2}>
                             <div className={styles.textCenter}>

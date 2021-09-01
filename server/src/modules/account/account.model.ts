@@ -10,6 +10,7 @@ export default class Account extends TimestampsModel {
     public name!: string;
     public email!: string;
     public password!: string;
+    public image: string;
 
 }
 
@@ -39,6 +40,9 @@ export const attributes = {
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    image: {
+        type: DataTypes.STRING
     }
 };
 
